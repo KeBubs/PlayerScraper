@@ -4,7 +4,7 @@ const url = 'https://fulltime.thefa.com/table.html;jsessionid=7508EBB8892817F4D8
 
 
 
-const main = async () => {
+const scraper = async () => {
   
   const team = `Sheldon Athletic Male`
 
@@ -31,21 +31,10 @@ const main = async () => {
     return players.map((player) => player.textContent);
 });
 
-// Console log all of the player names
-  console.log(players)
-
-  
-
-  
-  
-  // Click the Players tab
-
-  // Find the containers where the player names are located.
-
-  
-
-  
   await browser.close();
+
+  return players
+  
 };
 
-main ()
+export default scraper
