@@ -15,6 +15,7 @@ function App() {
   // Can evetually change the teams to be dynamically rendered
   const [teams, setTeams] = useState(TeamInfo)
   const [home, setHome] = useState(true)
+  const [selectedTeam, setSelectedTeam] = useState(null)
   const [loading, setLoading] = useState(false)
 
   // Function which will go and fetch the players from the endpoint.
@@ -24,6 +25,7 @@ function App() {
       setHome(true)
     } else {
       setLoading(true)
+      setSelectedTeam(value)
 
     const response = await fetch(combined, {
       method: "GET",
@@ -41,7 +43,7 @@ function App() {
   return (
     <div>
       <h3>Player Scraper: Oakbourne Championship League</h3>
-      {loading ? (<p>Loading...</p>) : (home ? <Teams teams={teams} function={handleClick}/> : <Players players={players} function={handleClick}/>)}
+      {loading ? (<p>Loading...</p>) : (home ? <Teams teams={teams} function={handleClick}/> : <Players selectedTeam={selectedTeam} players={players} function={handleClick}/>)}
       
     </div>
   )

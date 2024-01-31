@@ -1,12 +1,17 @@
 .container {
+    text-align: center;
+}
+
+.teamContainer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .team {
     border: 1px solid black;
-    width: 20%;
+    width: auto;
 }

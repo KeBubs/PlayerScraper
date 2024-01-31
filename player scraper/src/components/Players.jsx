@@ -2,22 +2,14 @@ import styles from '../styles/players.module.css'
 import { useState, useEffect} from 'react'
 
 export default function Players (props) {
-    const [loading, setLoading] = useState(true)
-    const [players, setPlayers] = useState(props.players)
-
-
-    useEffect(()=>{
-        setLoading(false)
-    },[players])
-
+    
+    const players = props.players
+    const team = props.selectedTeam
     const handleClick = props.function
     return (
-        loading ? 
-        (<p>Loading...</p>) 
-        : 
-        (
             <>
             <div className={styles.container}>
+                <h5>Showing players for {team}</h5>
                 <div className={styles.playersContainer}>
                     {players.map((player) => (
                         <p className={styles.player}>{player}</p>
@@ -26,6 +18,6 @@ export default function Players (props) {
                 <button className={styles.button} onClick={()=> handleClick('Home')}>Click here to show teams</button>
             </div>
             </>
-        )
+
     )
 }
