@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import Teams from './components/Teams'
+import Players from './components/Players'
+import Data from './data/samplePlayers.json'
+import TeamInfo from './data/sampleTeams.json'
 
 const url = import.meta.env.VITE_URL
 const port = import.meta.env.VITE_PORT
@@ -7,24 +11,34 @@ const combined = url + port
 import './App.css'
 
 function App() {
-  const [players, setPlayers] = useState(null)
+  const [players, setPlayers] = useState(false)
+  const [teams, setTeams] = useState(TeamInfo)
   const [loading, setLoading] = useState(true)
 
   // Function which will go and fetch the players from the endpoint.
-  async function handleClick(){
+  async function handleClick(team){
+    console.log(team)
+
     const response = await fetch(combined, {
-      method: "GET"
+      method: "GET",
+      
     })
     const data = await response.json(response)
     console.log(data)
-    setLoading(false)
+  
+    if (players == true){
+      setPlayers(false)
+    } else {
+      setPlayers(true)
+    }
+    
   }
 
   return (
-    <>
-      <p>Player finder for the Oakbourne Championship League</p>
-      <button onClick={()=>{handleClick()}}>Click here to return the players</button>
-    </>
+    <div>
+      <h3>Player Scraper: Oakbourne Championship League</h3>
+      {players == false ? (<Teams teams={teams} function={handleClick}/>) : (<Players players={Data} function={handleClick}/>)}
+    </div>
   )
 }
 

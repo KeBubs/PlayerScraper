@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playersContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);;
+    justify-items: center;
+    gap: 1rem;
+    
+}
+
+.player {
+    font-size: 70%;
+    border: 1px solid black;
+    padding: 4px;
+}
+
+.button {
+    width: 30%;
+}
