@@ -12,24 +12,28 @@ import './App.css'
 
 function App() {
   const [players, setPlayers] = useState(false)
+  // Can evetually change the teams to be dynamically rendered
   const [teams, setTeams] = useState(TeamInfo)
-  const [loading, setLoading] = useState(true)
+  const [home, setHome] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   // Function which will go and fetch the players from the endpoint.
-  async function handleClick(team){
-    console.log(team)
+  async function handleClick(value){
+    
+    if (value == 'Home'){
+      setHome(true)
+    } else {
+      setLoading(true)
 
     const response = await fetch(combined, {
       method: "GET",
+      headers: {"team": value}
       
     })
     const data = await response.json(response)
-    console.log(data)
-  
-    if (players == true){
-      setPlayers(false)
-    } else {
-      setPlayers(true)
+    setPlayers(data)
+    setHome(false)
+    setLoading(false)
     }
     
   }
@@ -37,7 +41,8 @@ function App() {
   return (
     <div>
       <h3>Player Scraper: Oakbourne Championship League</h3>
-      {players == false ? (<Teams teams={teams} function={handleClick}/>) : (<Players players={Data} function={handleClick}/>)}
+      {loading ? (<p>Loading...</p>) : (home ? <Teams teams={teams} function={handleClick}/> : <Players players={players} function={handleClick}/>)}
+      
     </div>
   )
 }

@@ -9,8 +9,10 @@ const port = process.env.VITE_PORT
 app.use(cors())
 
 app.get('/', async (req, res) => {
-    console.log('request received')
-    const data = await scraper()
+    console.log('request received for ', req.headers.team)
+    const team = req.headers.team
+    const data = await scraper(team)
+    
     res.json(data)
 })
 

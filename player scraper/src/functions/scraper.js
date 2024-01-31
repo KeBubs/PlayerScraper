@@ -4,9 +4,8 @@ const url = 'https://fulltime.thefa.com/table.html;jsessionid=7508EBB8892817F4D8
 
 
 
-const scraper = async () => {
+const scraper = async (team) => {
   
-  const team = `Sheldon Athletic Male`
 
   // Launch the browser and open a new blank page
   const browser = await puppeteer.launch({headless: true});

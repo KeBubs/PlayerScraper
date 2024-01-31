@@ -23,7 +23,7 @@ export default function Players (props) {
                         <p className={styles.player}>{player}</p>
                     ))}
                 </div>
-                <button className={styles.button} onClick={()=> handleClick()}>Click here to show teams</button>
+                <button className={styles.button} onClick={()=> handleClick('Home')}>Click here to show teams</button>
             </div>
             </>
         )
