@@ -4,11 +4,14 @@ import Players from './components/Players'
 import Data from './data/samplePlayers.json'
 import TeamInfo from './data/sampleTeams.json'
 
+// Currently, URL is set to the deployed version.
+//    May need to add a development variable for localhost
 const url = import.meta.env.VITE_URL
+
+// Currently, port not used. Would only be used for development purposes.
 const port = import.meta.env.VITE_PORT
 
 /* Current issue here with env variable not being seen */
-const combined = "http://localhost:3000"
 
 import './App.css'
 
@@ -29,7 +32,7 @@ function App() {
       setLoading(true)
       setSelectedTeam(value)
 
-    const response = await fetch(combined, {
+    const response = await fetch(url, {
       method: "GET",
       headers: {"team": value}
       
