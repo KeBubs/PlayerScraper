@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -r dotenv/config server.js"
+    "start": "npx puppeteer browsers install chrome && nodemon -r dotenv/config server.js"
   },
   "keywords": [],
   "author": "",
