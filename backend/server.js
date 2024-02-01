@@ -9,8 +9,8 @@ const port = process.env.PORT || 3000
 app.use(cors())
 
 app.get('/', async (req, res) => {
-    console.log('request received for ', req.headers.team)
-    const team = req.headers.team
+    const team = decodeURIComponent(req.query.team)
+    console.log('request received for ', team)
     const data = await scraper(team)
     
     res.json(data)

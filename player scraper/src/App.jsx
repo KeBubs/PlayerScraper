@@ -32,10 +32,8 @@ function App() {
       setLoading(true)
       setSelectedTeam(value)
 
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {"team": value}
-      
+    const response = await fetch(`${url}?team=${encodeURIComponent(value)}`, {
+      method: "GET"
     })
     const data = await response.json(response)
     setPlayers(data)
