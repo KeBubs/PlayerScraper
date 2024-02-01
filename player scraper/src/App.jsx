@@ -6,7 +6,9 @@ import TeamInfo from './data/sampleTeams.json'
 
 const url = import.meta.env.VITE_URL
 const port = import.meta.env.VITE_PORT
-const combined = url + port
+
+/* Current issue here with env variable not being seen */
+const combined = "http://localhost:3000"
 
 import './App.css'
 

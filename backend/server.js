@@ -1,10 +1,10 @@
 import express from 'express'
-import scraper from './src/functions/scraper.js'
+import scraper from './scraper.js'
 import 'dotenv/config'
 import cors from 'cors'
 
 const app = express()
-const port = process.env.VITE_PORT
+const port = 3000
 
 app.use(cors())
 

@@ -5,10 +5,10 @@ const url = 'https://fulltime.thefa.com/table.html;jsessionid=7508EBB8892817F4D8
 
 
 const scraper = async (team) => {
-  
+  console.log('The team requested is: ', team)
 
   // Launch the browser and open a new blank page
-  const browser = await puppeteer.launch({headless: true});
+  const browser = await puppeteer.launch({headless: "new"});
   const page = await browser.newPage();
 
   // Navigate the page to a URL
